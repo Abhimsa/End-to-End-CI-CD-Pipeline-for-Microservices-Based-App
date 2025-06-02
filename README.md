@@ -1,36 +1,42 @@
-# CI/CD Pipeline for Microservices-Based Application
+# CI/CD Pipeline for Microservices Application
 
 ## Overview
-This project implements an automated CI/CD pipeline using GitHub Actions to build, test, and deploy microservices to a Kubernetes cluster.
+This repository contains configuration and code demonstrating a full CI/CD pipeline using GitHub Actions. It builds, tests, and deploys multiple microservices to a Kubernetes cluster.
 
-## Technologies Used
-- GitHub Actions
-- Docker
-- Kubernetes
-- Helm
+## Technologies
+- GitHub Actions (CI/CD)
+- Docker & Docker Hub
+- Kubernetes & kubectl
+- Helm (optional for advanced deployments)
+- Microservices (Node.js examples)
 
 ## Features
-- Automated build and test on code push
-- Docker image creation and push to Docker Hub
-- Helm-based deployment to Kubernetes
+- Build and test microservices on push
+- Docker image build and push to Docker Hub
+- Kubernetes deployment automation
 
-## Setup Instructions
-1. Configure GitHub Secrets for:
-   - DOCKERHUB_USERNAME
-   - DOCKERHUB_TOKEN
-   - KUBECONFIG (base64 encoded)
-2. Push code to trigger GitHub Actions workflow
-3. Verify deployment in Kubernetes cluster
+## Prerequisites
+- Docker Hub account and repository
+- Kubernetes cluster access (minikube, EKS, GKE, etc.)
+- GitHub repository with secrets:
+  - `DOCKERHUB_USERNAME`
+  - `DOCKERHUB_TOKEN`
+  - `KUBECONFIG` (base64 encoded kubeconfig file)
 
-## Folder Structure
-/cicd-pipeline
-├── .github/workflows/ci-cd.yml
-├── k8s/
-│ ├── deployment.yaml
-│ └── service.yaml
-├── services/
-│ ├── service1/
-│ │ └── Dockerfile
-│ └── service2/
-│ └── Dockerfile
-└── README.md
+## Usage
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/yourusername/cicd-pipeline.git
+   cd cicd-pipeline
+   ```
+2. Update Docker Hub username in .github/workflows/ci-cd.yml
+
+3. Push code to main branch to trigger GitHub Actions workflow
+
+4. Monitor pipeline in GitHub Actions tab
+
+5. Confirm deployments with:
+
+```bash
+kubectl get pods
+kubectl get svc
